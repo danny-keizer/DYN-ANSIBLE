@@ -2,14 +2,16 @@
 
 - hosts: routers
   gather_facts: false
+  connection: network_cli
   tasks:
+
   - name: configure
-    cisco.ios.ios_config:
+    ios_config:
       src: /etc/ansible/roles/DYN-ANSIBLE/config.txt
 
 
   - name: save
-    cisco.ios.ios_config:
+    ios_config:
       src: /etc/ansible/roles/DYN-ANSIBLE/config.txt
     
   
