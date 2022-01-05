@@ -1,0 +1,27 @@
+enable
+conf t
+!
+hostname R1
+!
+enable secret 5 cisco
+!
+aaa new-model
+!
+no ip domain lookup
+ip domain name danny.local
+no ipv6 cef
+!
+username danny privilege 15 password 0 cisco
+username root privilege 15 password 0 cisco
+!
+interface GigabitEthernet1
+ip address 172.16.30.2 255.255.255.248 
+no sh
+!
+line con 0
+exec-timeout 0 0
+privilege level 15
+!
+Crypto key generate rsa
+1024 (of 2048)
+Ip ssh version 2
