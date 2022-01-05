@@ -11,7 +11,6 @@
       - router-id 1.1.1.1
       - network 172.16.30.0 0.0.0.7 area 0
       parents: router ospf 100
-      username: 'root'
-      password: 'cisco'
-      host: "{{ inventory_hostname }}"
+
+  
 ...
