@@ -6,7 +6,7 @@
   tasks:
 
   - name: make extended acl
-    cisco.ios.ios_config:
+    ios_config:
       lines:
       - 10 permit ip any any 
 

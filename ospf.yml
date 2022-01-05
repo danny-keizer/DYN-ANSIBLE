@@ -6,7 +6,7 @@
   tasks:
 
   - name: configure ospf
-    cisco.ios.ios_config:
+    ios_config:
       lines:
       - router-id 1.1.1.1
       - network 172.16.30.0 0.0.0.7 area 0
