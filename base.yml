@@ -5,14 +5,15 @@
   connection: network_cli
   tasks:
 
-  - name: configure
+  - name: base
     ios_config:
-      src: /etc/ansible/roles/DYN-ANSIBLE/config.txt
+      lines:
+      - hostname CSR
+      - enable secret 5 cisco
+      - aaa new-model
+      - no-ip domain lookup
+      - username danny privilege 15 password 0 cisco
+      - username root privilege 15 password 0 cisco
+      
 
-
-  - name: save
-    ios_config:
-      src: /etc/ansible/roles/DYN-ANSIBLE/config.txt
-    
-  
 ...
