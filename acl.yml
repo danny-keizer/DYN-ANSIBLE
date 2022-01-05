@@ -2,7 +2,7 @@
 
 - hosts: routers
   gather_facts: false
-
+  connectione: network_cli
   tasks:
 
   - name: make extended acl
