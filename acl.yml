@@ -3,16 +3,16 @@
 - hosts: routers
   gather_facts: false
 
-tasks:
+  tasks:
 
-  - name: make extended acl
-    cisco.ios.ios_config:
-      lines:
-      - 10 permit ip any any 
+    - name: make extended acl
+      cisco.ios.ios_config:
+        lines:
+        - 10 permit ip any any 
 
-      parents: ip access-list extended test
-      before: no ip access-list extended test
-      match: exact
+        parents: ip access-list extended test
+        before: no ip access-list extended test
+        match: exact
 
   
 ...
