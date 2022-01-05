@@ -36,7 +36,14 @@
       lines:
       - description LAN link
       - ip address 10.1.3.1 255.255.255.0
-      parents: interface GigabitEthernet2      
+      parents: interface GigabitEthernet2 
+
+
+  - name: configure loopback
+    ios_config:
+      lines:
+      - ip address 2.2.2.2
+      parents: interface loopback 1    
 
 
 - hosts: 172.16.60.3
@@ -59,6 +66,13 @@
       - description LAN link
       - ip address 10.1.3.2 255.255.255.0
       parents: interface GigabitEthernet2
+  
+
+  - name: configure loopback
+    ios_config:
+      lines:
+        - ip address 3.3.3.3
+      parents: interface loopback 1
 
 
 ...
