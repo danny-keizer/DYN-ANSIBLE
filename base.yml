@@ -1,6 +1,6 @@
 ---
-
-- hosts: routers
+# Config voor CSR02
+- hosts: 172.16.60.2
   gather_facts: false
   connection: network_cli
   tasks:
@@ -8,7 +8,7 @@
   - name: base
     ios_config:
       lines:
-      - hostname CSR
+      - hostname R2
       - enable secret 5 cisco
       - aaa new-model
       - no ip domain lookup
@@ -46,6 +46,24 @@
       lines:
       - ip address 2.2.2.2 255.255.255.0  
       parents: interface loopback 1 
+
+
+# Config voor CSR03
+- hosts: 172.16.60.3
+  gather_facts: false
+  connection: network_cli
+  tasks:
+
+  - name: base
+    ios_config:
+      lines:
+      - hostname R3
+      - enable secret 5 cisco
+      - aaa new-model
+      - no ip domain lookup
+      - ip domain name danny.local
+      - username danny privilege 15 password 0 cisco
+      - username root privilege 15 password 0 cisco
 
 
 - hosts: 172.16.60.3
