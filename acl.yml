@@ -17,14 +17,11 @@
       match: exact
 
   - name: apply acl
-    ios_acl_interfaces:
-      config:
-      - name: GigabitEthernet1
-        access_groups:
-        - afi: ipv4
-          acls:
-          - name: test
-            direction: in
+    ios_config:
+      lines:
+      - ip access-group test in 
+      parents: interface GigabitEthernet1
+
 
   
 ...
