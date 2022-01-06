@@ -8,11 +8,11 @@
        filter: "ansible_date_time"
        gather_subset: "!all"
 
-   - name: Store DTG as fact
+   - name: sla datum op
      set_fact:
        DTG: "{{ ansible_date_time.date }}"
 
-   - name: Create Directory {{hostvars.localhost.DTG}}
+   - name: maak directory {{hostvars.localhost.DTG}}
      file:
       path: /root/backups/{{hostvars.localhost.DTG}}
       state: directory
@@ -27,7 +27,7 @@
        commands: show run  
      register: config
 
-   - name: Save output to ~/network-programmability/backups/
+   - name: sla output op naar ~/network-programmability/backups/
      copy:
        content: "{{config.stdout[0]}}"
        dest: "/root/backups/{{hostvars.localhost.DTG}}/{{inventory_hostname}}-{{hostvars.localhost.DTG}}-config.txt"
@@ -54,7 +54,7 @@
       - show ip interface brief | exc admin
 
   tasks:
-   - name: show commando's
+   - name: show commands
      ios_command:
        commands: "{{ command_list }}"
      register: showoutput

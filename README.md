@@ -1,2 +1,4 @@
 # DYN-ANSIBLE
-DYN-ANSIBLE hoi
+Playbooks voor dynamic networks
+
+
