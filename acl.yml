@@ -8,11 +8,23 @@
   - name: make extended acl
     ios_config:
       lines:
-      - 10 permit ip any any 
+      - 10 deny tcp any any eq 23
+      - 20 permit ip any any 
+      
 
       parents: ip access-list extended test
       before: no ip access-list extended test
       match: exact
+
+  - name: apply acl
+    ios_acl_interfaces:
+      config:
+      - name: GigabitEthernet1
+        access_groups:
+        - afi: ipv4
+          acls:
+          - name: test
+            direction: in
 
   
 ...
