@@ -1,5 +1,4 @@
 ---
-## Playbook to get system time and append it to backup files
 
 - hosts: localhost
 
@@ -20,7 +19,7 @@
   run_once: true
 
 - hosts: routers
-
+  connection: network_cli
   tasks:
 
    - name: backup configuratie 
@@ -34,7 +33,7 @@
        dest: "/root/backups/{{hostvars.localhost.DTG}}/{{inventory_hostname}}-{{hostvars.localhost.DTG}}-config.txt"
        
 - hosts: routers
-
+  connection: network_cli
   vars:
     command_list:
     # - show etherchannel summary 
