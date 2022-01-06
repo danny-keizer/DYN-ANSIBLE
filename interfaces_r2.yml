@@ -10,7 +10,7 @@
     ios_config:
       lines:
       - description WAN link
-      - ip address 172.16.30.2 255.255.255.254
+      - ip address 172.16.30.2 255.255.255.248
       parents: interface GigabitEthernet1
 
 

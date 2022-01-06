@@ -1,6 +1,6 @@
 ---
 
-- hosts: routers
+- hosts: 172.16.30.2
   gather_facts: false
   connection: network_cli
   tasks:
@@ -8,9 +8,21 @@
   - name: configure ospf
     ios_config:
       lines:
-      - router-id 1.1.1.1
+      - router-id 2.2.2.2
       - network 172.16.30.0 0.0.0.7 area 0
       parents: router ospf 100
+
+- hosts: 172.16.30.2
+  gather_facts: false
+  connection: network_cli
+  tasks:
+
+  - name: configure ospf
+    ios_config:
+      lines:
+      - router-id 3.3.3.3
+      - network 172.16.30.0 0.0.0.7 area 0
+      parents: router ospf 100  
 
   
 ...
