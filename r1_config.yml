@@ -1,0 +1,59 @@
+---
+
+- hosts: 172.16.60.4
+  gather_facts: false
+  connection: network_cli
+  tasks:
+
+
+  - name: basic configuration
+    vyos_config:
+      lines:
+      - set system host-name R1
+      - set system name-server 8.8.8.8
+      - set protocols ospf area 0 network 172.16.30.0/29
+      - set protocols ospf parameters router-id 1.1.1.1
+  
+  - name: configure interface eth0
+    vyos_config:
+      lines:
+      - set interfaces ethernet eth0 address '172.16.30.1/31'
+      - set interfaces ethernet eth0 description 'ISP'
+
+
+  - name: configure interface eth1
+    vyos_config:
+      lines:
+      - set interfaces ethernet eth1 address '172.16.30.3/29'
+      - set interfaces ethernet eth1 description 'OSPF-A'
+
+
+  - name: configure interface eth2
+    vyos_config:
+      lines:
+      - set interfaces ethernet eth2 address '172.16.3.0/29'
+      - set interfaces ethernet eth2 description 'OSPF-B'
+
+
+  - name: configure interface eth3
+    vyos_config:
+      lines:
+      #- set interfaces ethernet eth3 address '172.16.3.0/31'
+      - set interfaces ethernet eth3 description 'TUN2'
+
+
+  - name: configure interface eth4
+    vyos_config:
+      lines:
+      #- set interfaces ethernet eth4 address '172.16.3.0/31'
+      - set interfaces ethernet eth4 description 'TUN3'
+  
+
+  - name: configure interface eth5
+    vyos_config:
+      lines:
+      - set interfaces ethernet eth5 address '172.16.60.4/29'
+      - set interfaces ethernet eth5 description 'MGMT'
+
+
+...
