@@ -48,6 +48,12 @@
       parents: interface loopback 1 
 
 
+  - name: default route
+    ios_config:
+      lines:
+      - ip route 0.0.0.0 0.0.0.0 172.16.30.1
+
+
 # Config voor CSR03
 - hosts: 172.16.60.3
   gather_facts: false
@@ -95,6 +101,12 @@
       lines:
         - ip address 3.3.3.3 255.255.255.0  
       parents: interface loopback 1 
+
+    
+  - name: default route
+    ios_config:
+      lines:
+      - ip route 0.0.0.0 0.0.0.0 172.16.30.1
 
 
 ...
