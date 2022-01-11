@@ -17,7 +17,7 @@
   - name: configure interface eth0
     vyos_config:
       lines:
-      - set interfaces ethernet eth0 address '172.16.3.1/32'
+      - set interfaces ethernet eth0 address '172.16.3.1/31'
       - set interfaces ethernet eth0 description 'ISP'
 
 
@@ -60,8 +60,8 @@
     vyos_config:
       lines:
       - set protocols bgp local-as 65003
-      - set protocols bgp neighbor 172.16.3.2 ebgp-multihop 2
-      - set protocols bgp neighbor 172.16.3.2 remote-as 65100
+      - set protocols bgp neighbor 172.16.3.0 ebgp-multihop 2
+      - set protocols bgp neighbor 172.16.3.0 remote-as 65100
       - set protocols bgp parameters router-id '172.16.3.1'
       - set protocols bgp address-family ipv4-unicast redistribute ospf
 
