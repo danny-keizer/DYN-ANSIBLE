@@ -10,7 +10,7 @@
   - name: configure ip sla
     ios_config:
       lines:
-      - icmp-echo source-interface Gigabitethernet1
+      - icmp-echo 172.16.30.1 source-interface Gigabitethernet1
       - timeout 1000
       - threshold 2
       - frequency 3
@@ -30,7 +30,7 @@
   - name: configure ip sla
     ios_config:
       lines:
-      - icmp-echo source-interface Gigabitethernet1
+      - icmp-echo 172.16.30.3 source-interface Gigabitethernet1
       - timeout 1000
       - threshold 2
       - frequency 3
