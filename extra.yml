@@ -10,11 +10,8 @@
   - name: configure ip sla
     ios_config:
       lines:
-      - ip sla 1
       - icmp-echo 172.16.30.1 source-interface Gigabitethernet1
-      - timeout 1000
-      - threshold 2
-      - frequency 3
+      parents: ip sla 1
 
   - name: schedule tracker
     ios_config:
@@ -30,10 +27,11 @@
   - name: configure ip sla
     ios_config:
       lines:
-      - icmp-echo 172.16.30.3 source-interface Gigabitethernet1
+      - icmp-echo source-interface Gigabitethernet1
       - timeout 1000
       - threshold 2
       - frequency 3
+      parents: ip sla 1
 
   - name: schedule tracker
     ios_config:
