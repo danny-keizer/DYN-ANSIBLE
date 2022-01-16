@@ -1,0 +1,45 @@
+---
+
+#IP SLA + PBR
+
+- hosts: 172.16.60.2
+  gather_facts: false
+  connection: network_cli
+  tasks:
+
+  - name: configure ip sla
+    ios_config:
+      lines:
+      - icmp-echo source-interface Gigabitethernet1
+      - timeout 1000
+      - threshold 2
+      - frequency 3
+      parents: ip sla 1
+
+  - name: schedule tracker
+    ios_config:
+      lines:
+      - ip sla schedule 1 life forever start-time now
+
+
+- hosts: 172.16.60.3
+  gather_facts: false
+  connection: network_cli
+  tasks:
+
+  - name: configure ip sla
+    ios_config:
+      lines:
+      - icmp-echo source-interface Gigabitethernet1
+      - timeout 1000
+      - threshold 2
+      - frequency 3
+      parents: ip sla 1
+
+  - name: schedule tracker
+    ios_config:
+      lines:
+      - ip sla schedule 1 life forever start-time now
+
+  
+...
