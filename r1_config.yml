@@ -47,7 +47,7 @@
   - name: configure interface eth4
     vyos_config:
       lines:
-      #- set interfaces ethernet eth4 address '172.16.3.0/31'
+      - set interfaces ethernet eth4 address '172.16.4.2/31'
       - set interfaces ethernet eth4 description 'TUN3'
   
 
@@ -66,12 +66,10 @@
       - set protocols bgp neighbor 172.16.3.0 remote-as 65100
       - set protocols bgp neighbor 172.16.100.1 ebgp-multihop 2
       - set protocols bgp neighbor 172.16.100.1 remote-as 65001
+      - set protocols bgp neighbor 172.16.4.3 ebgp-multihop 2
+      - set protocols bgp neighbor 172.16.4.3 remote-as 65004
       - set protocols bgp parameters router-id '172.16.3.1'
       - set protocols bgp address-family ipv4-unicast redistribute ospf
-
-  #- name: bgp peer met ben
-  #  vyos_config:
-  #    lines:
      
 
 
